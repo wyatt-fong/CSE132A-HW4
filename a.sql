@@ -4,27 +4,6 @@
     --   ename TEXT,
     --   managerid INT REFERENCES Employee(eid)
     -- );
-
-DROP TABLE IF EXISTS Employee;
-
-CREATE TABLE Employee (
-  eid INT PRIMARY KEY,
-  ename TEXT,
-  managerid INT REFERENCES Employee(eid)
-);
-
-INSERT INTO Employee (eid, ename, managerid) VALUES
-  (1, 'CEO', NULL),          -- Top of hierarchy
-  (2, 'Dana', 1),            -- Reports to CEO
-  (3, 'Carol', 2),           -- Reports to Dana
-  (4, 'Alice', 3),           -- Reports to Carol
-  (5, 'Bob', 3),             -- Reports to Carol
-  (6, 'Evan', 2),            -- Reports to Dana
-  (7, 'Frank', 6);           -- Reports to Evan
-
-
--- Everything above is DDL/DML
--- Now begin the recursive CTE query
 WITH RECURSIVE Hierarchy AS (
     -- Base: employee + direct manager
     SELECT

@@ -1,0 +1,10 @@
+For this problem, we first do a recursive CTE to find all subtopics
+ branching from 'Support'
+
+After recursively finding all the subtopics, we then join the newly created table
+ with discussions to merge the tid's together and gain access to the messages
+
+Once merged, we unnest all the messages we then filter messages using regex
+ operation: WHERE msg ~* '(refund|return)'. This then will give us all the rows
+ in which the discussion comes from a subtopic from the parent topic, 'Support',
+ as well as all messages that match this regex expression.

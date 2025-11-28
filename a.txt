@@ -1,0 +1,12 @@
+For this problem, we first selected each employee and their direct manager.
+This gives us the starting point for walking up the management chain.
+
+After getting the direct manager, we use a recursive CTE to repeatedly follow
+that manager’s managerid to find the next manager above them. This keeps
+going until we eventually reach someone who has no manager.
+
+Now that all manager levels are expanded, we select the employee name paired
+with every manager above them. Using DISTINCT removes any duplicate rows.
+
+Once the recursion finishes, we’re left with each employee and the full list
+of managers above them, both direct and indirect.

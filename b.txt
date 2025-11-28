@@ -1,0 +1,13 @@
+For this problem, we first selected all outgoing links that start from 'home'.
+This forms the initial set of reachable pages.
+
+After that, we use a recursive CTE to keep following each target page as long
+as it appears as a source somewhere else in the table. This lets us walk the
+entire graph until no more pages can be reached.
+
+Once we have every reachable page, we filter the results using the regex
+condition ~* '(ref|polic)' to keep only the pages whose names contain
+those substrings.
+
+After applying this filter, we are left with the pages reachable from 'home'
+that match the keyword requirements.

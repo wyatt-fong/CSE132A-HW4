@@ -1,0 +1,12 @@
+For this problem, we first joined the two tables off of 'pid'.
+
+After joining the two tables, we then unnest the comments associated with the
+ product. This breaks the comment array into individual rows
+ so that I can check each comment separately.
+
+Now that all the comments are unnested, we can check whether the category of
+ a product is 'electronics' and also check if the comments section contains
+ potential substrings that indicate something is broken
+
+Once we query off these conditions, we are only left with the product(s) with issues
+ and a description of their issues.
